@@ -14,6 +14,8 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/goodsStock")
+@CrossOrigin
+
 public class GoodsStockController {
 
     @Resource

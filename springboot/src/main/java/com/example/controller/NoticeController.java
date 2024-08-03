@@ -13,7 +13,9 @@ import java.util.List;
  * 系统公告前端操作接口
  **/
 @RestController
+@CrossOrigin
 @RequestMapping("/notice")
+
 public class NoticeController {
 
     @Resource

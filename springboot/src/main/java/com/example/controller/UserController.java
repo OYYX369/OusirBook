@@ -13,6 +13,8 @@ import java.util.List;
  * 前端操作接口
  **/
 @RestController
+@CrossOrigin
+
 @RequestMapping("/user")
 public class UserController {
 

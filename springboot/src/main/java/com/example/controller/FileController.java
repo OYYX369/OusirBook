@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
  */
 @RestController
 @RequestMapping("/files")
+@CrossOrigin
 public class FileController {
 
     // 表示本地磁盘文件的存储路径

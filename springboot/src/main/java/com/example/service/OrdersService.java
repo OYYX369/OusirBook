@@ -25,6 +25,8 @@ public class OrdersService {
     @Resource
     private GoodsService goodsService;
 
+
+
     /**
      * 新增
      */
@@ -44,7 +46,7 @@ public class OrdersService {
             throw new CustomException("商品库存不足");
         }
         goods.setStore(store);
-        goodsService.updateById(goods);
+        goodsService.updateById(goods);   //更新
         ordersMapper.insert(orders);
     }
 
@@ -59,8 +61,8 @@ public class OrdersService {
      * 修改状态
      */
     public void updateById(Orders orders) {
-        if ("已取消".equals(orders.getStatus())) { //用户取消订单  要返还库存
-            Integer goodsId = orders.getGoodsId();
+        if ("已取消".equals(orders.getStatus())) {    //用户取消订单  要返还库存
+            Integer goodsId = orders.getGoodsId();       //获取订单id
             Goods goods = goodsService.selectById(goodsId);
             if (goods != null) {
                 goods.setStore(goods.getStore() + orders.getNum());

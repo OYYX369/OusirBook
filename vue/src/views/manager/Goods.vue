@@ -16,7 +16,8 @@
         <el-table-column label="图片" prop="img">
           <template #default="scope">
             <el-image style="width: 50px; height: 50px; border-radius: 5px" :src="scope.row.img"
-                      :preview-src-list="[scope.row.img]" preview-teleported></el-image>
+                      :preview-src-list="[scope.row.img]" preview-teleported>
+            </el-image>
           </template>
         </el-table-column>
         <el-table-column label="简介" prop="descr"></el-table-column>
@@ -43,17 +44,21 @@
         <el-form-item label="名称" prop="name">
           <el-input v-model="data.form.name" autocomplete="off" />
         </el-form-item>
+
         <el-form-item label="图片" prop="img">
           <el-upload :action="uploadUrl" list-type="picture" :on-success="handleImgSuccess">
             <el-button type="primary">上传图片</el-button>
           </el-upload>
         </el-form-item>
+
         <el-form-item label="描述" prop="descr">
           <el-input type="textarea" v-model="data.form.descr" autocomplete="off" />
         </el-form-item>
+
         <el-form-item label="特色" prop="specials">
           <el-input v-model="data.form.specials" autocomplete="off" />
         </el-form-item>
+
         <el-form-item label="单价" prop="price">
           <el-input v-model="data.form.price" autocomplete="off" />
         </el-form-item>
@@ -113,7 +118,12 @@ request.get('/category/selectAll').then(res => {
 })
 
 // 文件上传的接口地址
-const uploadUrl = import.meta.env.VITE_BASE_URL + '/files/upload'
+const uploadUrl = "http://book-back.ousir.icu/files/upload"
+
+// 处理文件上传的钩子
+const handleImgSuccess = (res) => {
+  data.form.img = res.data  // res.data就是文件上传返回的文件路径，获取到路径后赋值表单的属性
+}
 
 // 分页查询
 const load = () => {
@@ -193,10 +203,6 @@ const reset = () => {
   load()
 }
 
-// 处理文件上传的钩子
-const handleImgSuccess = (res) => {
-  data.form.img = res.data  // res.data就是文件上传返回的文件路径，获取到路径后赋值表单的属性
-}
 
 load()
 </script>

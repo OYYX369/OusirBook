@@ -3,7 +3,7 @@
     <div class="card" style="padding: 30px">
       <el-form :model="data.user" label-width="100px" style="padding-right: 50px">
         <div style="margin: 20px 0; text-align: center">
-          <el-upload :show-file-list="false" class="avatar-uploader" action="http://localhost:9090/files/upload" :on-success="handleFileUpload">
+          <el-upload :show-file-list="false" class="avatar-uploader" action="http://book-back.ousir.icu/files/upload" :on-success="handleFileUpload">
             <img v-if="data.user.avatar" :src="data.user.avatar" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
           </el-upload>

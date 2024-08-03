@@ -15,6 +15,8 @@
         order by orders.id desc
     </select>
 
+
+
     <insert id="insert" parameterType="com.example.entity.Orders" useGeneratedKeys="true">
         insert into orders(id, order_no, goods_id, num, user_id, status, time)
         values (#{id}, #{orderNo}, #{goodsId}, #{num}, #{userId}, #{status}, #{time})
